@@ -1,4 +1,5 @@
-let dict = {
+  let dict = {
+    '\u0020':'\u3000',
     'ｱ': 'ア',
     'ｲ': 'イ',
     'ｳ': 'ウ',
@@ -85,18 +86,79 @@ let dict = {
     '｡': '。',
     '･': '・',
     '｢': '「',
-    '｣': '」' 
-}
-
-const halfToFull = (str) => {
-    let reg = /[！-￮]/
-    return helper(str.split('')).map(char => char.match(reg) ? 
-    char = dict[char] : char).join('')
-}
-
-// let string = 'ｱｼﾞｱ アジア'.split('').map(a=>a)
-
-const helper = (arr) => {
+    '｣': '」',
+    '0': '０',
+    '1': '１',
+    '2': '２',
+    '3': '３',
+    '4': '４',
+    '5': '５',
+    '6': '６',
+    '7': '７',
+    '8': '８',
+    '9': '９',
+    'A': 'Ａ',
+    'B': 'Ｂ',
+    'C': 'Ｃ',
+    'D': 'Ｄ',
+    'E': 'Ｅ',
+    'F': 'Ｆ',
+    'G': 'Ｇ',
+    'H': 'Ｈ',
+    'I': 'Ｉ',
+    'J': 'Ｊ',
+    'K': 'Ｋ',
+    'L': 'Ｌ',
+    'M': 'Ｍ',
+    'N': 'Ｎ',
+    'O': 'Ｏ',
+    'P': 'Ｐ',
+    'Q': 'Ｑ',
+    'R': 'Ｒ',
+    'S': 'Ｓ',
+    'T': 'Ｔ',
+    'U': 'Ｕ',
+    'V': 'Ｖ',
+    'W': 'Ｗ',
+    'X': 'Ｘ',
+    'Y': 'Ｙ',
+    'Z': 'Ｚ',
+    'a': 'ａ',
+    'b': 'ｂ',
+    'c': 'ｃ',
+    'd': 'ｄ',
+    'e': 'ｅ',
+    'f': 'ｆ',
+    'g': 'ｇ',
+    'h': 'ｈ',
+    'i': 'ｉ',
+    'j': 'ｊ',
+    'k': 'ｋ',
+    'l': 'ｌ',
+    'm': 'ｍ',
+    'n': 'ｎ',
+    'o': 'ｏ',
+    'p': 'ｐ',
+    'q': 'ｑ',
+    'r': 'ｒ',
+    's': 'ｓ',
+    't': 'ｔ',
+    'u': 'ｕ',
+    'v': 'ｖ',
+    'w': 'ｗ',
+    'x': 'ｘ',
+    'y': 'ｙ',
+    'z': 'ｚ' 
+  }
+  
+  const halfToFull = (str) => {
+    let reg = /[A-Za-z0-9｡-￮]/
+    str = helper(str.split(''))
+    str = str.map(ch => ch.match(reg) ? ch = dict[ch] : ch).join('')
+    return str
+  }
+  
+  const helper = (arr) => {
     for(let i = 0; i<arr.length; i++){
         if(arr[i] == 'ﾞ' || arr[i] == 'ﾟ') {
             arr[i-1] = arr[i-1].concat(arr[i])
@@ -104,4 +166,4 @@ const helper = (arr) => {
         }
     }
     return arr
-}
+  }
